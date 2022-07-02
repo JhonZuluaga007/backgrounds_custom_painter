@@ -181,3 +181,44 @@ class _CurvedHeadersPainter extends CustomPainter {
     return true;
   }
 }
+
+class WavesHeaders extends StatelessWidget {
+  const WavesHeaders({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: double.infinity,
+      width: double.infinity,
+      child: CustomPaint(
+        painter: _WavesHeadersPainter(),
+      ),
+    );
+  }
+}
+
+class _WavesHeadersPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final lapiz = Paint();
+    lapiz.color = const Color(0xff615AAB);
+    lapiz.style = PaintingStyle.fill;
+    lapiz.strokeWidth = 5;
+
+    final path = Path();
+
+    path.lineTo(0, size.height * 0.25);
+    path.quadraticBezierTo(size.width * 0.25, size.height * 0.30,
+        size.width * 0.5, size.height * 0.25);
+    path.quadraticBezierTo(
+        size.width * 0.75, size.height * 0.20, size.width, size.height * 0.25);
+    path.lineTo(size.width, 0);
+
+    canvas.drawPath(path, lapiz);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+}
