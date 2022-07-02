@@ -142,3 +142,42 @@ class _PeakHeadersPainter extends CustomPainter {
     return true;
   }
 }
+
+class CurvedHeaders extends StatelessWidget {
+  const CurvedHeaders({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: double.infinity,
+      width: double.infinity,
+      child: CustomPaint(
+        painter: _CurvedHeadersPainter(),
+      ),
+    );
+  }
+}
+
+class _CurvedHeadersPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final lapiz = Paint();
+    lapiz.color = const Color(0xff615AAB);
+    lapiz.style = PaintingStyle.fill;
+    lapiz.strokeWidth = 5;
+
+    final path = Path();
+
+    path.lineTo(0, size.height * 0.3);
+    path.quadraticBezierTo(
+        size.width * 0.5, size.height * 0.5, size.width, size.height * 0.3);
+    path.lineTo(size.width, 0);
+
+    canvas.drawPath(path, lapiz);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+}
