@@ -10,7 +10,8 @@ class HeadersPage extends StatelessWidget {
       //body: SquareHeaders(),
       //body: CircularHeaders(),
       //body: DiagonalHeaders(),
-      body: TriangleHeaders(),
+      //body: TriangleHeaders(),
+      body: PeakHeaders(),
     );
   }
 }
